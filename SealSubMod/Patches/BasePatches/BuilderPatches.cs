@@ -10,7 +10,10 @@ internal class BuilderPatches//Allows you to build base pieces even though the g
     [HarmonyPatch(nameof(Builder.GetObstacles))]
     public static void Prefix(ref Func<Collider, bool> filter)
     {
-        //This will technically affect all base pieces, but in this case that's not a big deal because only pieces placed in the seal would ever be colliding with another piece inside the seal anyway
-        filter += col => col.GetComponentInParent<BasePieceLocationMarker>();//the interfering collider is part of another base piece, so ignore it
+        if (Player.main.GetCurrentSub() is SealSubRoot)
+        {
+            //the interfering collider is part of another base piece, so ignore it
+            filter += col => col.GetComponentInParent<BasePieceLocationMarker>();
+        }
     }
 }
