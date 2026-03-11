@@ -116,7 +116,7 @@ internal class MaterialSetter : MonoBehaviour
         holographicUIMaterial = null;
     }
 
-    public static IEnumerator LoadMaterialsAsyncLoadTask(WaitScreenHandler.WaitScreenTask task)
+    public static IEnumerator LoadMaterialsAsyncLoadTask()
     {
         yield return LoadMaterialsAsync();
     }

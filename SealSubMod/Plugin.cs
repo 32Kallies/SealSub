@@ -61,8 +61,6 @@ public class Plugin : BaseUnityPlugin
 
         ConsoleCommandsHandler.RegisterConsoleCommands(typeof(ConsoleCommands));
         
-        WaitScreenHandler.RegisterLateAsyncLoadTask(PluginInfo.PLUGIN_NAME, MaterialSetter.LoadMaterialsAsyncLoadTask);
-
         LanguageHandler.RegisterLocalizationFolder();
 
         SealPingType = EnumHandler.AddEntry<PingType>("SealSub")

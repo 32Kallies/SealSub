@@ -2,6 +2,7 @@
 using Nautilus.Assets.Gadgets;
 using SealSubMod.Interfaces;
 using SealSubMod.MonoBehaviours.Abstract;
+using SealSubMod.MonoBehaviours.Prefab;
 using SealSubMod.Utility;
 
 namespace SealSubMod.Prefabs;
@@ -27,6 +28,8 @@ public class SealSubPrefab
 
     private static IEnumerator GetGameObject(IOut<GameObject> gameObject)
     {
+        yield return MaterialSetter.LoadMaterialsAsyncLoadTask();
+        
         var model = Plugin.assets.LoadAsset<GameObject>("SealSubPrefab");
         model.SetActive(false);
         var prefab = Object.Instantiate(model);
